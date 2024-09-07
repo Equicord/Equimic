@@ -39,7 +39,7 @@ jobs:
       - name: 🏗️ Build Addon
         if: ${{ github.event.inputs.fix != 'true' }}
         run: |
-          docker run -v ${{ github.workspace }}:/work --platform linux/${{ matrix.arch }} ghcr.io/equicord/equimic-builder-${{ matrix.arch }}:latest /build.sh
+          docker run -v ${{ github.workspace }}:/work --platform linux/${{ matrix.arch }} ghcr.io/vencord/venmic-builder-${{ matrix.arch }}:latest /build.sh
 
       - name: ♻️ Reuse Artifact
         if: ${{ github.event.inputs.fix == 'true' }}
