@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.16)
-project(venmic-addon LANGUAGES CXX VERSION 2.0)
+project(equimic-addon LANGUAGES CXX VERSION 2.0)
 
 # --------------------------------------------------------------------------------------------------------
 # Create library
 # --------------------------------------------------------------------------------------------------------
 
 add_library(${PROJECT_NAME} SHARED)
-add_library(vencord::venmic-addon ALIAS ${PROJECT_NAME})
+add_library(equicord::equimic-addon ALIAS ${PROJECT_NAME})
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
@@ -37,7 +37,7 @@ CPMFindPackage(
   GIT_REPOSITORY "https://github.com/ericniebler/range-v3"
 )
 
-target_link_libraries(${PROJECT_NAME} PUBLIC vencord::venmic range-v3::meta)
+target_link_libraries(${PROJECT_NAME} PUBLIC equicord::equimic range-v3::meta)
 
 # --------------------------------------------------------------------------------------------------------
 # CMake.js related

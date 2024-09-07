@@ -1,18 +1,18 @@
-const venmic = require("../../lib");
+const equimic = require("../../lib");
 const assert = require("assert");
 
 let patchbay = null;
 
 try
 {
-    patchbay = new venmic.PatchBay();
+    patchbay = new equimic.PatchBay();
 }
 catch (error)
 {
     console.warn("No PipeWire Server available");
 
-    assert(!venmic.PatchBay.hasPipeWire());
-    assert.throws(() => new venmic.PatchBay(), /failed to create patchbay/ig);
+    assert(!equimic.PatchBay.hasPipeWire());
+    assert.throws(() => new equimic.PatchBay(), /failed to create patchbay/ig);
 
     process.exit(0);
 }

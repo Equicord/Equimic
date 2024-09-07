@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="https://avatars.githubusercontent.com/u/113042587" width="150">
+<img src="https://avatars.githubusercontent.com/u/150590884" width="150">
 
 <br/>
 
-venmic - screenshare support for pipewire
+Equimic - screenshare support for pipewire
 
 </div>
 
@@ -13,13 +13,14 @@ venmic - screenshare support for pipewire
 
 ## 📖 Usage
 
-_venmic_ can be used as node-module or as a local rest-server.
+_equimic_ can be used as node-module or as a local rest-server.
 
-The node-module is mainly intended for internal usage by [Vesktop](https://github.com/Vencord/Vesktop).
-For a usage example, see the following Vesktop source files:
-- [src/main/venmic.ts](https://github.com/Vencord/Vesktop/blob/main/src/main/venmic.ts)
-- [src/renderer/patches/screenShareAudio.ts](https://github.com/Vencord/Vesktop/blob/main/src/renderer/patches/screenShareAudio.ts)
-- src/renderer/components/ScreenSharePicker.tsx: [1](https://github.com/Vencord/Vesktop/blob/4abae9c7082081dcae667916d9608e23adf688a9/src/renderer/components/ScreenSharePicker.tsx#L109-L115), [2](https://github.com/Vencord/Vesktop/blob/4abae9c7082081dcae667916d9608e23adf688a9/src/renderer/components/ScreenSharePicker.tsx#L253-L256), [3](https://github.com/Vencord/Vesktop/blob/4abae9c7082081dcae667916d9608e23adf688a9/src/renderer/components/ScreenSharePicker.tsx#L94)
+The node-module is mainly intended for internal usage by [Vesktop](https://github.com/Vencord/Vesktop) & [Equibop](https://github.com/Equicord/Equibop).
+For a usage example, see the following Vesktop & Equibop source files:
+- [src/main/venmic.ts](https://github.com/Vencord/Vesktop/blob/main/src/main/venmic.ts) - Vesktop
+- [src/main/equimic.ts](https://github.com/Equicord/Equibop/blob/main/src/main/equimic.ts) - Equibop
+- [src/renderer/patches/screenShareAudio.ts](https://github.com/Vencord/Vesktop/blob/main/src/renderer/patches/screenShareAudio.ts) - Vesktop
+- [src/renderer/patches/screenShareAudio.ts](https://github.com/Equicord/Equibop/blob/main/src/renderer/patches/screenShareAudio.ts) - Equibop
 
 The Rest-Server exposes three simple endpoints
 * (POST) `/list`
@@ -63,7 +64,7 @@ The Rest-Server exposes three simple endpoints
   When enabled it will prevent linking against nodes that don't play to the default speaker.
 
   The setting `workaround` is also optional and will default to an empty array.  
-  When set, venmic will redirect the first node that matches all of the specified properties to itself.
+  When set, equimic will redirect the first node that matches all of the specified properties to itself.
   </blockquote>
 
 * (GET) `/unlink`
@@ -85,9 +86,9 @@ The Rest-Server exposes three simple endpoints
 
 ## 🐛 Debugging
 
-When reporting an issue please make sure to set the environment variable `VENMIC_ENABLE_LOG`.
+When reporting an issue please make sure to set the environment variable `EQUIMIC_ENABLE_LOG`.
 
-If said variable is set venmic will output a lot of useful information to stdout and a log-file which can be found in `~/.local/state/venmic/venmic.log`.
+If said variable is set equimic will output a lot of useful information to stdout and a log-file which can be found in `~/.local/state/equimic/equimic.log`.
 
 It is highly recommended to include this log file in your issue report otherwise we may not be able to help you!
 

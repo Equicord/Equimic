@@ -9,7 +9,7 @@
 
 namespace pw = pipewire;
 
-namespace vencord
+namespace equicord
 {
     struct list_nodes
     {
@@ -35,4 +35,4 @@ namespace vencord
 
     using pw_recipe = pw::recipe<list_nodes, link_options, unset_target, quit, abort>;
     using cr_recipe = cr::recipe<std::vector<node>, ready, quit>;
-} // namespace vencord
+} // namespace equicord

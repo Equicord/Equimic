@@ -7,7 +7,7 @@
 #include <glaze/glaze.hpp>
 #include <pulse/pulseaudio.h>
 
-namespace vencord
+namespace equicord
 {
     patchbay::~patchbay() = default;
 
@@ -41,7 +41,7 @@ namespace vencord
         if (!instance)
         {
             instance = std::unique_ptr<patchbay>(new patchbay);
-            logger::get()->info("[patchbay] (get) running venmic {}", VENMIC_VERSION);
+            logger::get()->info("[patchbay] (get) running equimic {}", equimic_VERSION);
         }
 
         return *instance;
@@ -58,7 +58,7 @@ namespace vencord
         }
 
         auto *loop    = pa_mainloop_new();
-        auto *context = pa_context_new(pa_mainloop_get_api(loop), "venmic-pulse-info");
+        auto *context = pa_context_new(pa_mainloop_get_api(loop), "equimic-pulse-info");
 
         struct state
         {
@@ -121,4 +121,4 @@ namespace vencord
 
         return cached.emplace(name.find("pipewire") != std::string::npos);
     }
-} // namespace vencord
+} // namespace equicord

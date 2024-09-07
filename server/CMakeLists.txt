@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(venmic-server LANGUAGES CXX VERSION 2.0)
+project(equimic-server LANGUAGES CXX VERSION 2.0)
 
 # --------------------------------------------------------------------------------------------------------
 # Create library
@@ -35,4 +35,4 @@ CPMFindPackage(
   GIT_REPOSITORY "https://github.com/yhirose/cpp-httplib"
 )
 
-target_link_libraries(${PROJECT_NAME} PUBLIC vencord::venmic glaze::glaze httplib)
+target_link_libraries(${PROJECT_NAME} PUBLIC equicord::equimic glaze::glaze httplib)

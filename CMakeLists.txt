@@ -1,35 +1,36 @@
 cmake_minimum_required(VERSION 3.21)
-project(venmic LANGUAGES CXX VERSION 6.1.0)
+project(equimic LANGUAGES CXX VERSION 6.1.0)
 
 # --------------------------------------------------------------------------------------------------------
 # Library options
 # --------------------------------------------------------------------------------------------------------
 
-option(venmic_addon         "Build as addon"                            OFF)
-option(venmic_server        "Build as rest server"                       ON)
-option(venmic_prefer_remote "Prefer remote packages over local packages" ON)
+option(equimic_addon         "Build as addon"                            OFF)
+option(equimic_server        "Build as rest server"                       ON)
+option(equimic_prefer_remote "Prefer remote packages over local packages" ON)
+option(equimic_static_cxx    "Static link libstdc++ and libgcc"          OFF)
 
 # --------------------------------------------------------------------------------------------------------
 # Addon and Rest-Server are mutually exclusive
 # --------------------------------------------------------------------------------------------------------
 
-if (venmic_addon)
-  set(venmic_server OFF)
+if (equimic_addon)
+  set(equimic_server OFF)
 endif()
 
-if (venmic_server)
-  set(venmic_addon OFF)
+if (equimic_server)
+  set(equimic_addon OFF)
 endif()
 
 # --------------------------------------------------------------------------------------------------------
-# Sync `CPM_DOWNLOAD_ALL` with `venmic_prefer_remote`
+# Sync `CPM_DOWNLOAD_ALL` with `equimic_prefer_remote`
 # --------------------------------------------------------------------------------------------------------
 
-if (venmic_prefer_remote)
-    message(STATUS "[venmic] Avoiding local packages as 'venmic_prefer_remote' is ON")
+if (equimic_prefer_remote)
+    message(STATUS "[equimic] Avoiding local packages as 'equimic_prefer_remote' is ON")
 endif()
 
-set(CPM_DOWNLOAD_ALL ${venmic_prefer_remote})
+set(CPM_DOWNLOAD_ALL ${equimic_prefer_remote})
 
 # --------------------------------------------------------------------------------------------------------
 # CMake options
@@ -42,13 +43,17 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 # --------------------------------------------------------------------------------------------------------
 
 add_library(${PROJECT_NAME})
-add_library(vencord::venmic ALIAS ${PROJECT_NAME})
+add_library(equicord::equimic ALIAS ${PROJECT_NAME})
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 20 CXX_EXTENSIONS OFF CXX_STANDARD_REQUIRED ON)
 
 if (PROJECT_IS_TOP_LEVEL)
   target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic -Werror -pedantic -pedantic-errors -Wfatal-errors)
+endif()
+
+if (equimic_static_cxx)
+  target_link_libraries(${PROJECT_NAME} PRIVATE -static-libgcc -static-libstdc++)
 endif()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
@@ -71,13 +76,13 @@ target_sources(${PROJECT_NAME} PRIVATE ${src})
 # --------------------------------------------------------------------------------------------------------
 
 target_include_directories(${PROJECT_NAME} PUBLIC  "include")
-target_include_directories(${PROJECT_NAME} PRIVATE "include/vencord" "private")
+target_include_directories(${PROJECT_NAME} PRIVATE "include/equicord" "private")
 
 # --------------------------------------------------------------------------------------------------------
 # Setup compile definitions
 # --------------------------------------------------------------------------------------------------------
 
-target_compile_definitions(${PROJECT_NAME} PUBLIC VENMIC_VERSION="${PROJECT_VERSION}")
+target_compile_definitions(${PROJECT_NAME} PUBLIC equimic_VERSION="${PROJECT_VERSION}")
 
 # --------------------------------------------------------------------------------------------------------
 # Setup Dependencies
@@ -140,7 +145,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC PulseAudio::PulseAudio)
 # Setup Rest Server
 # --------------------------------------------------------------------------------------------------------
 
-if (venmic_server)
+if (equimic_server)
   add_subdirectory(server)
 endif()
 
@@ -148,10 +153,10 @@ endif()
 # Setup Node Addon
 # --------------------------------------------------------------------------------------------------------
 
-if (venmic_addon AND NOT CMAKE_JS_VERSION)
-  message(FATAL_ERROR "[venmic] Please build the addon using CMake.js")
+if (equimic_addon AND NOT CMAKE_JS_VERSION)
+  message(FATAL_ERROR "[equimic] Please build the addon using CMake.js")
 endif()
 
-if (venmic_addon)
+if (equimic_addon)
   add_subdirectory(addon)
 endif()

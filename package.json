@@ -1,5 +1,5 @@
 {
-  "name": "@vencord/venmic",
+  "name": "@equicord/equimic",
   "description": "linux audio screenshare for discord (or any electron app) via pipewire",
   "keywords": [
     "pipewire",
@@ -17,8 +17,9 @@
   "scripts": {
     "clean": "cmake-js clean",
     "test": "node tests/node/*.js",
-    "cpcmds": "cmake-js configure --CDvenmic_addon=ON --CDCMAKE_EXPORT_COMPILE_COMMANDS=ON",
-    "install": "pkg-prebuilds-verify ./lib/options.js || cmake-js compile --CDvenmic_addon=ON"
+    "cpcmds": "cmake-js configure --CDequimic_addon=ON --CDCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+    "install": "pkg-prebuilds-verify ./lib/options.js || cmake-js compile --CDequimic_addon=ON",
+    "install:static": "pkg-prebuilds-verify ./lib/options.js || cmake-js compile --CDequimic_addon=ON --CDequimic_static_cxx=ON"
   },
   "os": [
     "linux"
@@ -46,11 +47,11 @@
     "registry": "https://registry.npmjs.org/"
   },
   "bugs": {
-    "url": "https://github.com/Vencord/venmic/issues"
+    "url": "https://github.com/Equicord/Equimic/issues"
   },
-  "homepage": "https://github.com/Vencord/venmic",
+  "homepage": "https://github.com/Equicord/Equimic",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Vencord/venmic.git"
+    "url": "https://github.com/Equicord/Equimic.git"
   }
 }

@@ -21,7 +21,7 @@
 #include <rohrkabel/registry/events.hpp>
 #include <rohrkabel/registry/registry.hpp>
 
-namespace vencord
+namespace equicord
 {
     using port_map = std::vector<std::pair<pw::port_info, pw::port_info>>;
 
@@ -64,7 +64,7 @@ namespace vencord
         std::unique_ptr<pw::metadata> metadata;
         std::unique_ptr<pw::metadata_listener> meta_listener;
 
-        std::optional<vencord::speaker> speaker;
+        std::optional<equicord::speaker> speaker;
         std::optional<std::uint32_t> lettuce_target;
 
       private:
@@ -148,4 +148,4 @@ namespace vencord
       private:
         void start(pw_recipe::receiver, cr_recipe::sender);
     };
-} // namespace vencord
+} // namespace equicord

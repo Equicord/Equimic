@@ -2,7 +2,7 @@
 #include <memory>
 #include <spdlog/spdlog.h>
 
-namespace vencord
+namespace equicord
 {
     class logger
     {
@@ -20,4 +20,4 @@ namespace vencord
       public:
         [[nodiscard]] static logger &get();
     };
-} // namespace vencord
+} // namespace equicord

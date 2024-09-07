@@ -1,5 +1,5 @@
 name: 🐛 Bug Report
-description: Report a bug in the current version of venmic
+description: Report a bug in the current version of equimic
 labels: ["bug"]
 assignees: Curve
 
@@ -21,7 +21,7 @@ body:
   - type: textarea
     attributes:
       label: 🗒️ Debug Output
-      description: Please dump the contents of the log or stdout here (see https://github.com/Vencord/venmic#-debugging).
+      description: Please dump the contents of the log or stdout here (see https://github.com/Equicord/equimic#-debugging).
     validations:
       required: true
 

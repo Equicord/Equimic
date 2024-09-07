@@ -4,7 +4,7 @@
 #include <spdlog/sinks/ansicolor_sink.h>
 #include <spdlog/sinks/basic_file_sink.h>
 
-namespace vencord
+namespace equicord
 {
     namespace fs = std::filesystem;
 
@@ -29,14 +29,14 @@ namespace vencord
             rtn = state_home;
         }
 
-        return rtn / "venmic";
+        return rtn / "equimic";
     }
 
     logger::logger() : m_impl(std::make_unique<impl>())
     {
         namespace sinks = spdlog::sinks;
 
-        m_impl->logger = std::make_unique<spdlog::logger>("venmic");
+        m_impl->logger = std::make_unique<spdlog::logger>("equimic");
         m_impl->logger->set_level(spdlog::level::trace);
         m_impl->logger->flush_on(spdlog::level::trace);
 
@@ -46,7 +46,7 @@ namespace vencord
         m_impl->logger->sinks().emplace_back(stdout_sink);
 
         // NOLINTNEXTLINE(*-mt-unsafe)
-        if (!std::getenv("VENMIC_ENABLE_LOG"))
+        if (!std::getenv("equimic_ENABLE_LOG"))
         {
             return;
         }
@@ -59,7 +59,7 @@ namespace vencord
             fs::create_directories(directory, ec);
         }
 
-        auto file_sink = std::make_shared<sinks::basic_file_sink_mt>((directory / "venmic.log").string());
+        auto file_sink = std::make_shared<sinks::basic_file_sink_mt>((directory / "equimic.log").string());
 
         file_sink->set_level(spdlog::level::trace);
         stdout_sink->set_level(spdlog::level::trace);
@@ -83,4 +83,4 @@ namespace vencord
 
         return *instance;
     }
-} // namespace vencord
+} // namespace equicord

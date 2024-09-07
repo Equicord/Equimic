@@ -5,7 +5,7 @@
 #include <memory>
 #include <string>
 
-namespace vencord
+namespace equicord
 {
     using node = std::map<std::string, std::string>;
 
@@ -50,4 +50,4 @@ namespace vencord
         [[nodiscard]] static patchbay &get();
         [[nodiscard]] static bool has_pipewire();
     };
-} // namespace vencord
+} // namespace equicord

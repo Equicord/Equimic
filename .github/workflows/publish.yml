@@ -39,7 +39,7 @@ jobs:
       - name: 🏗️ Build Addon
         if: ${{ github.event.inputs.fix != 'true' }}
         run: |
-          docker run -v ${{ github.workspace }}:/work --platform linux/${{ matrix.arch }} ghcr.io/vencord/venmic-builder-${{ matrix.arch }}:latest /build.sh
+          docker run -v ${{ github.workspace }}:/work --platform linux/${{ matrix.arch }} ghcr.io/equicord/equimic-builder-${{ matrix.arch }}:latest /build.sh
 
       - name: ♻️ Reuse Artifact
         if: ${{ github.event.inputs.fix == 'true' }}
@@ -97,7 +97,7 @@ jobs:
           path: build/Release
 
       - name: 🛠️ Prepare Prebuilds (amd64)
-        run: pnpm pkg-prebuilds-copy --baseDir build/Release --source venmic-addon.node --name=venmic-addon --strip --napi_version=7 --arch=x64
+        run: pnpm pkg-prebuilds-copy --baseDir build/Release --source equimic-addon.node --name=equimic-addon --strip --napi_version=7 --arch=x64
 
       - name: 📦 Download Build (arm64)
         uses: actions/download-artifact@v4
@@ -106,7 +106,7 @@ jobs:
           path: build/Release
 
       - name: 🛠️ Prepare Prebuilds (arm64)
-        run: pnpm pkg-prebuilds-copy --baseDir build/Release --source venmic-addon.node --name=venmic-addon --strip --napi_version=7 --arch=arm64
+        run: pnpm pkg-prebuilds-copy --baseDir build/Release --source equimic-addon.node --name=equimic-addon --strip --napi_version=7 --arch=arm64
 
       - name: 🛒 Publish
         if: ${{ github.event.inputs.test != 'true' }}

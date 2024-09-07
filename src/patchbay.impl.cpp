@@ -12,7 +12,7 @@
 #include <glaze/glaze.hpp>
 #include <rohrkabel/device/device.hpp>
 
-namespace vencord
+namespace equicord
 {
     struct pw_metadata_name
     {
@@ -148,7 +148,7 @@ namespace vencord
         logger::get()->trace("[patchbay] (create_mic) creating virt-mic");
 
         auto node = core->create<pw::node>(pw::null_sink_factory{
-                                               .name      = "vencord-screen-share",
+                                               .name      = "equicord-screen-share",
                                                .positions = {"FL", "FR"},
                                            })
                         .get();
@@ -676,4 +676,4 @@ namespace vencord
 
         logger::get()->trace("[patchbay] (main_loop) finished");
     }
-} // namespace vencord
+} // namespace equicord

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <optional>
 
-#include <vencord/patchbay.hpp>
+#include <equicord/patchbay.hpp>
 
 #include <napi.h>
 #include <range/v3/view.hpp>
@@ -33,7 +33,7 @@ std::optional<bool> convert(Napi::Value value)
 }
 
 template <>
-std::optional<vencord::node> convert(Napi::Value value)
+std::optional<equicord::node> convert(Napi::Value value)
 {
     if (!value.IsObject())
     {
@@ -41,7 +41,7 @@ std::optional<vencord::node> convert(Napi::Value value)
     }
 
     auto object = value.As<Napi::Object>();
-    auto rtn    = vencord::node{};
+    auto rtn    = equicord::node{};
 
     for (const auto &[obj_key, obj_value] : object)
     {
@@ -93,7 +93,7 @@ struct patchbay : public Napi::ObjectWrap<patchbay>
     {
         try
         {
-            static_cast<void>(vencord::patchbay::get());
+            static_cast<void>(equicord::patchbay::get());
         }
         catch (std::exception &e)
         {
@@ -114,14 +114,14 @@ struct patchbay : public Napi::ObjectWrap<patchbay>
 
             if (!array)
             {
-                Napi::Error::New(env, "[venmic] expected list of strings").ThrowAsJavaScriptException();
+                Napi::Error::New(env, "[equimic] expected list of strings").ThrowAsJavaScriptException();
                 return {};
             }
 
             props = std::move(array.value());
         }
 
-        auto list = vencord::patchbay::get().list(props);
+        auto list = equicord::patchbay::get().list(props);
         auto rtn  = Napi::Array::New(env, list.size());
 
         auto convert = [&](const auto &item)
@@ -154,7 +154,7 @@ struct patchbay : public Napi::ObjectWrap<patchbay>
 
         if (info.Length() != 1 || !info[0].IsObject())
         {
-            Napi::Error::New(env, "[venmic] expected link object").ThrowAsJavaScriptException();
+            Napi::Error::New(env, "[equimic] expected link object").ThrowAsJavaScriptException();
             return Napi::Boolean::New(env, false);
         }
 
@@ -162,35 +162,35 @@ struct patchbay : public Napi::ObjectWrap<patchbay>
 
         if (!data.Has("include") && !data.Has("exclude"))
         {
-            Napi::Error::New(env, "[venmic] expected at least one of keys 'include' or 'exclude'")
+            Napi::Error::New(env, "[equimic] expected at least one of keys 'include' or 'exclude'")
                 .ThrowAsJavaScriptException();
 
             return Napi::Boolean::New(env, false);
         }
 
-        auto include               = to_array<vencord::node>(data.Get("include"));
-        auto exclude               = to_array<vencord::node>(data.Get("exclude"));
+        auto include               = to_array<equicord::node>(data.Get("include"));
+        auto exclude               = to_array<equicord::node>(data.Get("exclude"));
         auto ignore_devices        = convert<bool>(data.Get("ignore_devices"));
         auto only_speakers         = convert<bool>(data.Get("only_speakers"));
         auto only_default_speakers = convert<bool>(data.Get("only_default_speakers"));
-        auto workaround            = to_array<vencord::node>(data.Get("workaround"));
+        auto workaround            = to_array<equicord::node>(data.Get("workaround"));
 
         if (!include && !exclude)
         {
-            Napi::Error::New(env, "[venmic] expected either 'include' or 'exclude' or both to be present and to be "
+            Napi::Error::New(env, "[equimic] expected either 'include' or 'exclude' or both to be present and to be "
                                   "arrays of key-value pairs")
                 .ThrowAsJavaScriptException();
 
             return Napi::Boolean::New(env, false);
         }
 
-        vencord::patchbay::get().link({
-            .include               = include.value_or(std::vector<vencord::node>{}),
-            .exclude               = exclude.value_or(std::vector<vencord::node>{}),
+        equicord::patchbay::get().link({
+            .include               = include.value_or(std::vector<equicord::node>{}),
+            .exclude               = exclude.value_or(std::vector<equicord::node>{}),
             .ignore_devices        = ignore_devices.value_or(true),
             .only_speakers         = only_speakers.value_or(true),
             .only_default_speakers = only_default_speakers.value_or(true),
-            .workaround            = workaround.value_or(std::vector<vencord::node>{}),
+            .workaround            = workaround.value_or(std::vector<equicord::node>{}),
         });
 
         return Napi::Boolean::New(env, true);
@@ -198,13 +198,13 @@ struct patchbay : public Napi::ObjectWrap<patchbay>
 
     Napi::Value unlink([[maybe_unused]] const Napi::CallbackInfo &) // NOLINT(*-static)
     {
-        vencord::patchbay::get().unlink();
+        equicord::patchbay::get().unlink();
         return {};
     }
 
     static Napi::Value has_pipewire(const Napi::CallbackInfo &info)
     {
-        return Napi::Boolean::New(info.Env(), vencord::patchbay::has_pipewire());
+        return Napi::Boolean::New(info.Env(), equicord::patchbay::has_pipewire());
     }
 
   public:
@@ -245,4 +245,4 @@ Napi::Object init(Napi::Env env, Napi::Object exports)
 }
 
 // NOLINTNEXTLINE
-NODE_API_MODULE(venmic, init);
+NODE_API_MODULE(equimic, init);

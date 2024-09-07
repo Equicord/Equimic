@@ -3,13 +3,13 @@
 #include <exception>
 #include <glaze/glaze.hpp>
 
-#include <vencord/logger.hpp>
-#include <vencord/patchbay.hpp>
+#include <equicord/logger.hpp>
+#include <equicord/patchbay.hpp>
 
 int main(int argc, char **args)
 {
-    using vencord::logger;
-    using vencord::patchbay;
+    using equicord::logger;
+    using equicord::patchbay;
 
     auto port = 7591;
 
@@ -64,7 +64,7 @@ int main(int argc, char **args)
     server.Post("/link",
                 [](const auto &req, auto &response)
                 {
-                    vencord::link_options parsed;
+                    equicord::link_options parsed;
 
                     const auto error = glz::read_json(parsed, req.body);
 
