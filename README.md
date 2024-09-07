@@ -6,6 +6,8 @@
 
 Equimic - screenshare support for pipewire
 
+Fork of [Venmic](https://github.com/Vencord/Venmic)
+
 </div>
 
 > [!WARNING]  
