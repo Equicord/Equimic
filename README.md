@@ -12,6 +12,7 @@ Fork of [Venmic](https://github.com/Vencord/Venmic)
 
 > [!WARNING]  
 > This project is not intended for standalone usage. You need a modified discord client that makes use of this.
+> This is a screw around find out fork of venmic with additional fixes it working is not a guarantee
 
 ## 📖 Usage
 
@@ -21,8 +22,6 @@ The node-module is mainly intended for internal usage by [Vesktop](https://githu
 For a usage example, see the following Vesktop & Equibop source files:
 - [src/main/venmic.ts](https://github.com/Vencord/Vesktop/blob/main/src/main/venmic.ts) - Vesktop
 - [src/main/equimic.ts](https://github.com/Equicord/Equibop/blob/main/src/main/equimic.ts) - Equibop
-- [src/renderer/patches/screenShareAudio.ts](https://github.com/Vencord/Vesktop/blob/main/src/renderer/patches/screenShareAudio.ts) - Vesktop
-- [src/renderer/patches/screenShareAudio.ts](https://github.com/Equicord/Equibop/blob/main/src/renderer/patches/screenShareAudio.ts) - Equibop
 
 The Rest-Server exposes three simple endpoints
 * (POST) `/list`
