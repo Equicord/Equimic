@@ -18,10 +18,10 @@ Fork of [Venmic](https://github.com/Vencord/Venmic)
 
 _equimic_ can be used as node-module or as a local rest-server.
 
-The node-module is mainly intended for internal usage by [Vesktop](https://github.com/Vencord/Vesktop) & [Equibop](https://github.com/Equicord/Equibop).
-For a usage example, see the following Vesktop & Equibop source files:
-- [src/main/venmic.ts](https://github.com/Vencord/Vesktop/blob/main/src/main/venmic.ts) - Vesktop
+The node-module is mainly intended for internal usage by [Equibop](https://github.com/Equicord/Equibop).
+For a usage example, see the following Equibop source files:
 - [src/main/equimic.ts](https://github.com/Equicord/Equibop/blob/main/src/main/equimic.ts) - Equibop
+- [src/renderer/patches/screenShareFixes.ts](https://github.com/Equicord/Equibop/blob/main/src/renderer/patches/screenShareFixes.ts) - Equibop
 
 The Rest-Server exposes three simple endpoints
 * (POST) `/list`
