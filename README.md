@@ -4,6 +4,8 @@
 
 <br/>
 
+Discontinued for now...
+
 Equimic - screenshare support for pipewire
 
 Fork of [Venmic](https://github.com/Vencord/Venmic)
@@ -20,20 +22,21 @@ _equimic_ can be used as node-module or as a local rest-server.
 
 The node-module is mainly intended for internal usage by [Equibop](https://github.com/Equicord/Equibop).
 For a usage example, see the following Equibop source files:
+
 - [src/main/equimic.ts](https://github.com/Equicord/Equibop/blob/main/src/main/equimic.ts) - Equibop
 - [src/renderer/patches/screenShareFixes.ts](https://github.com/Equicord/Equibop/blob/main/src/renderer/patches/screenShareFixes.ts) - Equibop
 
 The Rest-Server exposes three simple endpoints
-* (POST) `/list`
+- (POST) `/list`
   > List all available applications to share.  
   > You can optionally define a JSON-Body containing all the props the listed nodes should have (i.e. `["node.name"]`).
 
-* (POST) `/link`  
+- (POST) `/link`  
   <blockquote>
   Expects a JSON-Body in the following form:
   <pre lang="json">
   {
-    "include": 
+    "include":
     [
       { "node.name": "Firefox" }
     ],
@@ -48,12 +51,12 @@ The Rest-Server exposes three simple endpoints
 
   Depending on wether or not `include` or `exclude` are defined the behavior will change:
 
-  * only `include`
-    * Links nodes that match given props
-  * only `exclude`
-    * Links nodes that do not match given props
-  * both `include` and `exclude`
-    * Links all applications that match props in `include` and not those given in `exclude`
+  - only `include`
+    - Links nodes that match given props
+  - only `exclude`
+    - Links nodes that do not match given props
+  - both `include` and `exclude`
+    - Links all applications that match props in `include` and not those given in `exclude`
 
   The setting `ignore_devices` is optional and will default to `true`.  
   When enabled it will prevent hardware-devices like speakers and microphones from being linked to the virtual microphone.
@@ -68,18 +71,20 @@ The Rest-Server exposes three simple endpoints
   When set, equimic will redirect the first node that matches all of the specified properties to itself.
   </blockquote>
 
-* (GET) `/unlink`
+- (GET) `/unlink`
   > Unlinks the currently linked application
 
 ## 🏗️ Compiling
 
-* Rest-Server
+- Rest-Server
+
     ```bash
     git clone https://github.com/Vencord/linux-virtmic && cd linux-virtmic
     cmake -B build && cmake --build build
     ```
 
-* Node-Addon
+- Node-Addon
+
     ```bash
     git clone https://github.com/Vencord/linux-virtmic && cd linux-virtmic
     pnpm install
@@ -95,8 +100,8 @@ It is highly recommended to include this log file in your issue report otherwise
 
 ## 🤝 Acknowledgements
 
-* [Curve/rohrkabel](https://github.com/Curve/rohrkabel/)
-* [cmake-js](https://github.com/cmake-js/cmake-js)
-* [@wwmm](https://github.com/wwmm) for improving compatibility with [EasyEffects](https://github.com/wwmm/easyeffects)
+- [Curve/rohrkabel](https://github.com/Curve/rohrkabel/)
+- [cmake-js](https://github.com/cmake-js/cmake-js)
+- [@wwmm](https://github.com/wwmm) for improving compatibility with [EasyEffects](https://github.com/wwmm/easyeffects)
 
 Kudos to all the developers involved, keep up the great work!
